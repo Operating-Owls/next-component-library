@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+button {
+  @apply text-white bg-blue-500 p-4 rounded-lg text-lg;
+  /* margin-top: 20%; */
+}
+
+a {
+  @apply text-blue-500;
+}
+
+.demo {
+  /* a class for containing component demos */
+  @apply bg-gray-100 p-4 rounded-lg;
+  margin-top: 100px;
+}

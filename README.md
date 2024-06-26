@@ -1,6 +1,53 @@
 # next-component-library
 A library of components built by Bay Valley Tech interns
 
+
+## Installation and Running the Next.js Project
+
+This guide explains how to install and run the `next-component-library` project from GitHub.  You will need to have Node.js npm, and Git installed on your local machine to install and run the project.
+
+### Installation
+
+1. **Clone the GitHub repository**:
+   Open your terminal and clone the repository using the following command:
+   ```bash
+   git clone https://github.com/Operating-Owls/next-component-library.git
+   ```
+   This command downloads the project files to your local machine.
+
+2. **Navigate to the project directory**:
+   Change directory to your project:
+   ```bash
+   cd next-component-library
+   ```
+
+3. **Install dependencies**:
+   Install all the required dependencies using npm:
+   ```bash
+   npm install
+   ```
+
+### Running the Project
+
+1. **Start the development server**:
+   Run the development server by executing:
+   ```bash
+   npm run dev
+   ```
+   This will start the Next.js development server on `http://localhost:3000`. You can view your project by navigating to `http://localhost:3000` in your web browser.
+
+2. **Build and run for production**:
+   - To build your application for production, run:
+     ```bash
+     npm run build
+     ```
+   - To start your application in production mode, run:
+     ```bash
+     npm start
+     ```
+   This will start the Next.js server optimized for production, usually on `http://localhost:3000`.
+
+
 ## How to Assign an Issue to Yourself
 
 1. Navigate to the **Issues** tab in the GitHub repository.
@@ -15,9 +62,9 @@ A library of components built by Bay Valley Tech interns
     - git checkout main
     - git pull origin main
 2. Create a new branch for your feature:
-    - git checkout -b your-initials-issue-number-feature-name
+    - git checkout -b your-initials-issue-number-feature-name.
     - Replace `feature-name` with a descriptive name for your feature.
-        - ex: git checkout -b ar-5-header-navigation
+    - ex: git checkout -b ar-5-header-navigation
 3. Make changes, write code, and commit your work:
     - git add .
     - git commit -m "Description of changes made"
