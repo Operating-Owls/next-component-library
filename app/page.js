@@ -1,3 +1,5 @@
+'use client';
+import ToolTip from '@/components/tooltip'
 
 
 export default function Home() {
@@ -16,11 +18,37 @@ export default function Home() {
             By Benjamin Schoolland
           </p>
           <p className="mb-2">
-            A simple toast notification component, for displaying messages to the user.
+            A simple toast notification component for displaying messages to the user.
           </p>
           <p>
             <a href="/toast-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
           </p>
+        </li>
+        <li>
+          <h3 className="font-semibold">Chatbot</h3>
+          <p className="mb-2">
+            By Benjamin Schoolland
+          </p>
+          <p className="mb-2">
+            A chatbot component for answering the user's questions.
+          </p>
+          <p>
+            <a href="/chatbot-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
+          </p>
+        </li>
+        <li>
+          <h3 className="font-semibold">
+            Tooltip
+          </h3>
+          <p className="mb-2">
+            By Benjamin Schoolland
+          </p>
+          <p className="mb-2">
+            A tooltip component for displaying additional information on hover.
+          </p>
+          <ToolTip component={<p>Click here to go to the tooltip component!</p>}>
+          <a href="/tooltip-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
+          </ToolTip>
         </li>
         <li>
           <p>TODO: add more</p>
