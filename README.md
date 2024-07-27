@@ -6,7 +6,7 @@ A library of components built by Bay Valley Tech interns
 
 This guide explains how to install and run the `next-component-library` project from GitHub.  You will need to have Node.js npm, and Git installed on your local machine to install and run the project.
 
-### Installation
+### Installation 
 
 1. **Clone the GitHub repository**:
    Open your terminal and clone the repository using the following command:
