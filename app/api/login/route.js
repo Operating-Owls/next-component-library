@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import CryptoJS from 'crypto-js';
 
 // Function to encrypt password
@@ -7,80 +8,73 @@ const encryptPassword = (password) => {
 
 // Function to decrypt password
 const decryptPassword = (encryptedPassword) => {
-  const bytes = CryptoJS.AES.decrypt(encryptedPassword, 'secret_key');
-  return bytes.toString(CryptoJS.enc.Utf8);
+    const bytes = CryptoJS.AES.decrypt(encryptedPassword, 'secret_key');
+    return bytes.toString(CryptoJS.enc.Utf8);
 };
 
-// Example user database (replace with your actual user data and backend logic)
-let users = [
-  { id: 1, username: 'user1', password: encryptPassword('password1') },
-  { id: 2, username: 'user2', password: encryptPassword('password2') },
+// Example users with encrypted passwords
+const users = [
+    { id: 1, username: 'user1', password: encryptPassword('password1') },
+    { id: 2, username: 'user2', password: encryptPassword('password2') },
 ];
 
-// API handler for registering new users
+// Function to register new users
 const registerUser = (username, password) => {
-  const encryptedPassword = encryptPassword(password);
-  const newUser = {
-    id: users.length + 1,
-    username,
-    password: encryptedPassword,
-  };
-  users.push(newUser);
-  return newUser;
+    const encryptedPassword = encryptPassword(password);
+    const newUser = {
+        id: users.length + 1,
+        username,
+        password: encryptedPassword,
+    };
+    users.push(newUser);
+    return newUser;
 };
 
-// API handler for login and registration
-export default function handler(req, res) {
-  if (req.method === 'POST') {
-    // Handle user login
-    const { username, password: encrypted_password_input } = req.body;
+export async function POST(req) {
+    try {
+        const { username, password: encryptedPasswordInput } = await req.json();
 
-    console.log('Received login request:', {
-      username,
-      password: encrypted_password_input,
-    });
+        console.log('Received login request:', { username, encryptedPasswordInput });
 
-    // Find user by username
-    const user = users.find((u) => u.username === username);
+        const user = users.find((u) => u.username === username);
 
-    if (!user) {
-      console.log('User not found');
-      return res.status(404).json({ message: 'User not found' });
+        if (!user) {
+            return NextResponse.json({ message: 'User not found' }, { status: 404 });
+        }
+
+        // Decrypt stored password and compare
+        const decryptedPassword = decryptPassword(user.password);
+        const decryptedPasswordInput = decryptPassword(encryptedPasswordInput);
+
+        console.log('Decrypted stored password:', decryptedPassword);
+        console.log('Decrypted input password:', decryptedPasswordInput);
+
+        if (decryptedPasswordInput !== decryptedPassword) {
+            return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
+        }
+
+        return NextResponse.json({ message: 'Login successful' }, { status: 200 });
+
+    } catch (error) {
+        console.error('Error:', error);
+        return NextResponse.json({ message: 'An unexpected error occurred.' }, { status: 500 });
     }
+}
 
-    // Decrypt stored password and compare
-    const decryptedPassword = decryptPassword(user.password);
-    const decrypted_password_input = decryptPassword(encrypted_password_input);
+export async function PUT(req) {
+    try {
+        const { username, password } = await req.json();
 
-    console.log('Decrypted password:', decryptedPassword);
+        const existingUser = users.find((u) => u.username === username);
+        if (existingUser) {
+            return NextResponse.json({ message: 'Username already exists' }, { status: 400 });
+        }
 
-    if (decrypted_password_input !== decryptedPassword) {
-      console.log('Invalid credentials');
-      return res.status(401).json({ message: 'Invalid credentials' });
+        const newUser = registerUser(username, password);
+        return NextResponse.json({ message: 'User registered successfully', user: newUser }, { status: 201 });
+
+    } catch (error) {
+        console.error('Error:', error);
+        return NextResponse.json({ message: 'An unexpected error occurred.' }, { status: 500 });
     }
-
-    // If credentials are valid, respond with success message
-    console.log('Login successful');
-    return res.status(200).json({ message: 'Login successful' });
-  } else if (req.method === 'PUT') {
-    // Handle user registration
-    const { username, password } = req.body;
-
-    // Check if username already exists
-    const existingUser = users.find((u) => u.username === username);
-    if (existingUser) {
-      return res.status(400).json({ message: 'Username already exists' });
-    }
-
-    // Register new user
-    const newUser = registerUser(username, password);
-
-    return res
-      .status(201)
-      .json({ message: 'User registered successfully', user: newUser });
-  } else {
-    // Handle other HTTP methods
-    console.log('Method Not Allowed');
-    return res.status(405).json({ message: 'Method Not Allowed' });
-  }
 }
