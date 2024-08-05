@@ -50,6 +50,19 @@ export default function Home() {
           <a href="/tooltip-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
           </ToolTip>
         </li>
+
+        <li className="mb-6">
+          <h3 className="font-semibold">Sidebar</h3>
+          <p className="mb-2">
+            By Naoko Violette
+          </p>
+          <p className="mb-2">
+            A reusable and responsive sidebar component.
+          </p>
+          <p>
+            <a href="/sidebar/dashboard" className="text-blue-500 hover:text-blue-700">View Demo</a>
+          </p>
+        </li>
         <li>
           <p>TODO: add more</p>
         </li>
