@@ -63,6 +63,18 @@ export default function Home() {
             <a href="/sidebar/dashboard" className="text-blue-500 hover:text-blue-700">View Demo</a>
           </p>
         </li>
+        <li className="mb-6">
+        <h3 className="font-semibold">Login</h3>
+          <p className="mb-2">
+            By Noah Betoshana
+          </p>
+          <p className="mb-2">
+            A login utility component.
+          </p>
+          <p>
+            <a href="/login-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
+          </p>
+        </li>
         <li>
           <p>TODO: add more</p>
         </li>
