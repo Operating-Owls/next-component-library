@@ -66,9 +66,19 @@ export default function Home() {
             </p>
             <a href="/contact-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
           </li>
+          {/* Sidebar */}
           <li className="mb-6">
-            <p>TODO: add more</p>
-          </li>
+          <h3 className="font-semibold">Sidebar</h3>
+          <p className="mb-2">
+            By Naoko Violette
+          </p>
+          <p className="mb-2">
+            A reusable and responsive sidebar component.
+          </p>
+          <p>
+            <a href="/sidebar/dashboard" className="text-blue-500 hover:text-blue-700">View Demo</a>
+          </p>
+        </li>
         </ul>
       </div>
     </div>
