@@ -9,11 +9,11 @@ const Page = () => {
       <div style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "20px"}}>
         <h1>Tooltip Demo</h1>
         <ToolTip component={<p>Click the link to go back to the home page</p>}>
-          <a href="/">Back to home</a>
+          <a className="text-blue-500;" href="/">Back to home</a>
         </ToolTip>
         <br />
         <ToolTip component={<p>Tooltips accept custom styling</p>} style={{backgroundColor: "darkblue", color: "white", padding: "10px"}}>
-          <button>Hover over me</button>
+          <button className='text-white bg-blue-500 p-4 rounded-lg text-lg;'>Hover over me</button>
         </ToolTip>
         <br />
         <ToolTip component={
