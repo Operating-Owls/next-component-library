@@ -66,6 +66,19 @@ export default function Home() {
             </p>
             <a href="/contact-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
           </li>
+          {/* FAQ */}
+          <li className="mb-6">
+            <h3 className="font-semibold">
+              FAQ
+            </h3>
+            <p className="mb-2">
+              By Alejandro N. Vasquez
+            </p>
+            <p className="mb-2">
+              A component to provide answers to frequently asked questions.
+            </p>
+            <a href="/faq-demo" className="text-blue-500 hover:text-blue-700">View Demo</a>
+          </li>
           {/* Sidebar */}
           <li className="mb-6">
           <h3 className="font-semibold">Sidebar</h3>
